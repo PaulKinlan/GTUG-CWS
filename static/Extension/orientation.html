@@ -1,0 +1,56 @@
+
+<!DOCTYPE html> 
+<html lang="en"> 
+ 
+	<head> 
+		
+		<!-- meta --> 
+		<meta charset="utf-8" /> 
+ 
+		<!-- tween --> 
+		<script type="text/javascript" src="static/js/Tween.js"></script> 
+		<script type="text/javascript" src="static/js/OpacityTween.js"></script> 
+		
+		<!-- script --> 
+		<script type="text/javascript" src="static/js/flight.js"></script> 
+ 
+		<!-- google font api--> 
+		<link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:extralight,light,regular&subset=latin' rel='stylesheet' type='text/css'> 
+		
+		<!-- style --> 
+		<link rel="stylesheet" type="text/css" href="static/css/reset.css" /> 
+		<link rel="stylesheet" type="text/css" href="static/css/style.css" /> 
+		
+		<title>Monocubed | Flight or Fight?</title> 
+		
+	</head> 
+ 
+	<body> 
+	
+			<!-- canvas bg --> 
+			<canvas id="canvasbg" width="800" height="450">Download Chrome</canvas> 
+			
+			<!-- game-intro --> 
+			<div id="game-start"> 
+				<h1 class="headline-1"><span class="pink-bg">FIGHT OR FLIGHT?</span></h1> 
+				<p>Catch the ones you can, avoid the ones you can't. Fight or Flight, choose well and score high!</p> 
+				<a id="game-start-btn" class="button blue" href="#" target="_blank">PLAY (MOUSE)</a><a id="game-start-btn-orientation" class="button blue" href="#" target="_blank">PLAY (ORIENTATION) *</a> 
+				<p class="disclaimer">* Requires browser & device that supports orientation (try <a href="http://build.chromium.org/buildbot/continuous/mac/LATEST/" target="_blank">Chromium</a> & a Macbook)</p> 
+			</div> 
+			
+			<!-- game-play --> 
+			<div id="game-play"> 
+				<span>Lives: </span><span id="lives-display">-</span><span> | Points: </span><span id="points-display">-</span><span id="quit"><a href="#" target="_blank" id="quit-btn">Quit</span> 
+			</div> 
+			
+			<!-- game-end --> 
+			<div id="game-end"> 
+				<h1 class="headline-1"><span class="pink-bg" id="final-points-display">-</span></h1> 
+				<h1 class="headline-1"><span class="pink-bg" id="best-score-display">-</span></h1> 
+				<a id="game-restart-btn" class="button blue" href="#" target="_blank">PLAY AGAIN (MOUSE)</a><a id="game-restart-btn-orientation" class="button blue" href="#" target="_blank">PLAY AGAIN (ORIENTATION) *</a> 
+				<p class="disclaimer">* Requires browser & device that supports orientation (try <a href="http://build.chromium.org/buildbot/continuous/mac/LATEST/" target="_blank">Chromium</a> & a Macbook)</p> 
+			</div> 
+ 
+	</body> 
+ 
+</html>

@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<!--
+Copyright 2010 Google Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+Original slides:
+    Marcin Wichary (mwichary)
+
+Modifications:
+    Paul Kinlan (paulkinlan)
+    Ernest Delgado (ernestd)
+    Alex Russell (slightlyoff)
+    Mihai Ionescu (mihai)
+    Arne Roomann-Kurrik (kurrik)
+-->
+<html>
+  <head>
+    <title>Chrome Extensions</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <script src="static/js/pretty.js"></script>
+    <script src="static/js/jquery-1.4.2.min.js"></script>
+    <script src="static/js/slide-presentation.js"></script>
+    <script src="static/js/slide-content.js"></script>
+    <script src="http://www.google.com/jsapi"></script>
+    <script>
+      var timeout = 2000;
+      function onWindow(window) {
+        setTimeout(function() {
+          chrome.windows.remove(window.id);
+        }, timeout);
+        timeout += 200;
+      };
+      
+      function openWindows() {
+        chrome.windows.create({ "width" : 200, "height" : 200, "top" : 100, "left" : 100, "url" : "testwindow01.html"}, onWindow);
+        chrome.windows.create({ "width" : 200, "height" : 200, "top" : 100, "left" : 350, "url" : "testwindow02.html"}, onWindow);
+        chrome.windows.create({ "width" : 300, "height" : 200, "top" : 100, "left" : 600, "url" : "testwindow03.html"}, onWindow);
+      };
+      
+      function renderScreenshot(id) {
+        chrome.tabs.captureVisibleTab(null, function(src) {
+          $("#" + id).attr('src', src);
+        });
+      };
+      
+      function setBadgeText(selector) {
+        var elem = $(selector);
+        var text = elem.val();
+        elem.val('');
+        chrome.browserAction.setBadgeText({ 'text' : text });
+      };
+      
+      function clearBadgeText() {
+        chrome.browserAction.setBadgeText({ 'text' : '' });
+      };
+      
+      function setBadgeColor(r, g, b, a) {
+        chrome.browserAction.setBadgeBackgroundColor({ 'color' : [r, g, b, a] });
+      };
+      
+      function drawFrame(context, icon, step) {
+        step += 10;
+        context.save();
+        context.clearRect(0, 0, 100, 100);
+        context.translate(9.5, 9.5);
+        context.rotate(step * Math.PI/180);
+        context.drawImage(icon, -9.5, -9.5, 19, 19);
+        context.restore();
+        if (step < 1440) {
+          chrome.browserAction.setIcon({
+            'imageData' : context.getImageData(0, 0, 19, 19)
+          });
+          setTimeout(drawFrame, 10, context, icon, step);
+        } else {
+          chrome.browserAction.setIcon({
+            'path' : 'static/images/icon-19.png'
+          });
+        }
+      };
+      
+      function runContentScriptDemo() {
+        // Hacked due to a bug in the way permissions work
+        var old_bg = "white";
+        jQuery("#cscript").css("background-color", "#ff0000");
+        window.setTimeout(function() { 
+          jQuery("#cscript").css('background-color', old_bg);
+        }, 2000);
+      };
+      
+      
+      function storeValue(elem) {
+        localStorage['optionValue'] = $(elem).val();
+      };
+      
+      
+    </script>
+    <link href='http://fonts.googleapis.com/css?family=Reenie+Beanie&subset=latin' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="static/css/slide-presentation.css" />
+    <link rel="stylesheet" href="static/css/prettify.css" />
+    <link rel="stylesheet" href="static/css/slide-content.css" />
+    <link href='http://fonts.googleapis.com/css?family=Molengo|Yanone+Kaffeesatz|Droid+Serif|OFL+Sorts+Mill+Goudy+TT|Inconsolata|Lobster|Cantal|Josefin+Sans+Std+Light' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+    <div class="presentation">
+      <div class="slides">
+
+
+<script>
+  function hide(id) {
+    $('#' + id).addClass('hidden');
+  }
+  function unhide(id) {
+    $('#' + id).removeClass('hidden');
+  };
+  $(document).ready(function() {
+    prettyPrint();
+  });
+</script>
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lobster">
+
+<!--
+ *
+ * Session Title
+ *
+-->
+<div class="slide">
+  <section class="center">
+    <div class="titleContent">
+      <h2 class="titleTitle">Chrome Extensions and Apps</h2>
+      <p class="titleText">
+        Paul Kinlan (<a href="http://twitter.com/paul_kinlan">@Paul_Kinlan</a>)
+        @ GUG
+        <br/>
+        <br/>
+        
+        http://bit.ly/9BJnPl
+        <br/>
+        <br/>
+        
+        November 2010
+      </p>
+    </div>
+  </section>
+</div>
+
+<div class="slide">
+  <section class="hbox boxcenter">
+    <div class="noflex vbox boxcenter">
+     <h2>Extensions make the browser better</h2>
+  </div>
+  </section>
+</div>
+
+<div class="slide">
+  <section class="hbox boxcenter">
+    <div class="noflex vbox boxcenter">
+    <h3>Quick to install</h3>
+    <p> and Auto-update</p>
+    </div>
+  </section>
+</div>
+
+<div class="slide">
+  <section class="hbox boxcenter">
+    <h2>How do you write an extension?</h2>
+  </section>
+</div>
+
+<div class="slide">
+  <section class="hbox boxcenter">
+    <header>Understand the API</header>
+    <div class="noflex vbox boxcenter">
+    <ul>
+      <li>Manage <code>bookmarks</code></li>
+      <li>Manipulate <code>history</code></li>
+      <li>Create <code>context menu</code>'s</li>
+      <li>Use <code>idle detection</code></li>
+      <li>Control <code>tabs / windows</code></li>
+      <li>Cross domain resource access.</li>
+      <li>Interact with the <code>Omnibar</code></li>
+      <li>Get a list of Extensions from the <code>Management</code> API</li>
+    </ul>
+    </div>
+  </section>
+</div>
+
+<div class="slide">
+  <section class="hbox boxcenter">
+    <header>Start with</header>
+    <div class="noflex vbox boxcenter">
+       an idea!
+    </div>
+  </section>
+</div>
+
+<div class="slide">
+  <section class="hbox boxcenter">
+    <div class="noflex vbox boxcenter" style="text-align: center;">
+      <h3>How do you want to interact with the user</h3>
+    </div>
+  </section>
+</div>
+
+<div class="slide">
+  <section class="hbox boxcenter">
+    <header>Browser Actions</header>
+    <div class="noflex vbox boxcenter" style="text-align: center;">
+      <p>Example</p>
+    </div>
+  </section>
+</div>
+
+<div class="slide">
+  <section class="hbox boxcenter">
+    <header>Page Actions</header>
+    <div class="noflex vbox boxcenter" style="text-align: center;">
+      <p><a href="http://slashdot.org/" target="_blank">Example</a></p>
+    </div>
+  </section>
+</div>
+
+<div class="slide">
+  <section class="hbox boxcenter">
+    <header>Content Scripts Actions</header>
+    <div class="noflex vbox boxcenter" style="text-align: center;">
+      <p><a href="https://chrome.google.com/extensions/detail/gijhnpblnlmaklpnabpjlngpelkofhih" target="_blank">Example</a></p>
+      <p><a href="http://news.google.com" target="_blank">Google News</a></p>
+    </div>
+  </section>
+</div>
+
+<div class="slide">
+  <section class="hbox boxcenter">
+    <header>Add some</header>
+    <div class="noflex vbox boxcenter">
+       <span style="color: #f00">HTML</span>, 
+       <span style="color: #0f0">CSS</span>, 
+       and 
+       <span style="color: #00f">JavaScript</span>
+    </div>
+  </section>
+</div>
+
+<div class="slide">
+  <header></header>
+  <section class="hbox boxcenter">
+    <header>And add a manifest.json...</header>
+    <div class="noflex vbox boxcenter">
+      
+      <pre class="prettyprint">{
+  "name" : "Sample manifest file",
+  "version" : "1.0",
+  "description" : "A simple manifest.json file",
+  "icons" : {
+    "48" : "icon-48.png",
+    "128" : "icon-128.png"
+  }
+}</pre>
+    </div>
+  </section>
+</div>
+
+<div class="slide">
+  <section class="hbox boxcenter">
+    <div class="noflex vbox boxcenter">
+    <p>But have to ask for the users permission.</p>
+     <pre class="prettyprint">{
+  "name" : "Sample manifest file",
+  "version" : "1.0",
+  "description" : "A simple manifest.json file",
+  <strong>"permissions" : [ "bookmarks", "history" ],</strong>
+  "icons" : {
+    "48" : "icon-48.png",
+    "128" : "icon-128.png"
+  }
+}</pre>
+    </div>
+  </section>
+</div>
+
+<div class="slide">
+  <section class="hbox boxcenter">
+    <div class="noflex vbox boxcenter center"><header>Develop right in Google Chrome</header>
+      <div class="centeredslidecontent">
+        <img src="static/images/chromecolonextensions.png" />
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="slide">
+  <section class="hbox boxcenter">
+    <header>Can extensions be apps?</header>
+    <div class="noflex vbox boxcenter">
+      <p>Yes! But use our app package instead</p>
+    </div>
+  </section>
+</div>
+
+<div class="slide">
+  <header></header>
+  <section class="hbox boxcenter">
+    <header>Also start with a manifest.json...</header>
+    <div class="noflex vbox boxcenter">
+      
+      <pre class="prettyprint">{
+  "name" : "Sample manifest file",
+  "version" : "1.0",
+  "description" : "A simple manifest.json file",
+  "permissions" : [ ... ],
+  "icons" : {
+    "48" : "icon-48.png",
+    "128" : "icon-128.png"
+  },
+  <strong>
+  "app" : {
+    "launch" : {
+      "local_path" : "index.html"
+    }
+  }</strong>
+}</pre>
+    </div>
+  </section>
+</div>
+
+<div class="slide">
+  <section class="hbox boxcenter">
+    <header>Installs in to the new tab page</header>
+    <div class="noflex vbox boxcenter">
+      <img src="static/images/ntp.png">
+    </div>
+  </section>
+</div>
+
+<div class="slide">
+  <section class="hbox boxcenter">
+    <div class="noflex vbox boxcenter center">
+      <h2>CodeLabs</h2>
+      <div class="noflex vbox boxcenter">
+        <p>Great Tutorial: <a href="http://kurrik.github.com/hackathons/" target="_blank">kurrik.github.com/hackathons/</a></p>
+        
+        <p>Learn more about Chrome extensions:<br/><a href="http://code.google.com/chrome/extensions/" target="_blank">code.google.com/chrome/extensions/</a></p>
+        <p>Learn more about HTML5:<br/><a href="http://html5rocks.com" target="_blank">www.html5rocks.com</a></p>
+      </div>
+    </div>
+  </section>
+</div>
+      </div> <!-- slides -->
+    </div> <!-- presentation -->
+  </body>
+</html>

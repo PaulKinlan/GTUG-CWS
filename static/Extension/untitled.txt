@@ -1,0 +1,57 @@
+
+Extensions 101
+
+ - Live on Github
+
+What are Extensions?
+
+What can I do with Extensions?
+
+Where do I start?
+  - an idea and a manifest
+  
+Background Pages
+ - Show code and demo
+
+Content scripts.
+  - Show pacman demo with new added code.
+
+Browser Action.
+ -Show Code and demo.
+
+Page Action.
+ - RSS feed detection
+
+Tabs + Windows
+ - Show code and demo.
+
+New Tab Page
+ - Show code and Demo.
+
+History.
+ - Show code and demo
+
+BookMarks.
+ - Show code and demo
+
+Context Menu.
+ - Show code and demo
+
+Internationalization
+ - Show code and demo (might be good right at the start). 
+
+Idle Detection
+ - Show code
+
+Accessibility
+ - Not sure how to show this.
+
+Cross Origin
+ - Show code and demo
+  
+Cookie Manipulation
+ - Show code and demo
+
+Experimental
+  - Text to Speech (if it is still in)
+  - 

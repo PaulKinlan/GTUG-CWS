@@ -1,0 +1,89 @@
+
+<!DOCTYPE html> 
+<html lang="en"> 
+	
+	<head> 
+		
+		<!-- charset --> 
+		<meta charset="utf-8" /> 
+	
+		<!-- title --> 
+		<title>Monocubed | Make3D</title> 
+		
+		<!-- style --> 
+		<link rel="stylesheet" href="static/css/reset.css" /> 
+		<link rel="stylesheet" href="static/css/style2.css" /> 
+		
+		<!-- web fonts--> 
+		<link href='http://fonts.googleapis.com/css?family=Cuprum&subset=latin' rel='stylesheet' type='text/css' /> 
+		
+		<!-- three.js --> 
+		<script type="text/javascript" src="static/js/Three.js"></script> 
+		<script type="text/javascript" src="static/js/Cube.js"></script> 
+		<script type="text/javascript" src="static/js/Plane.js"></script> 
+		
+		<!-- main --> 
+		<script src="static/js/init.js"></script> 
+		
+	</head> 
+ 
+	<body> 
+		
+		<div class="outer">
+		<div class="inner"> 
+			
+		<!-- drop area --> 
+		<div id="drop-area"> 
+		</div> 
+ 
+		<!-- intro --> 
+		<article id="intro-elem"> 
+			<h1>Make3D</h1> 
+			<h2>Drag & drop images here from your desktop and make 3D</h2>
+		</article> 
+		
+		<!-- preview area --> 
+		<div id="preview-area"> 
+			<canvas id="canvas-preview" width="120" height="68"></canvas> 
+		</div> 
+		
+		<!-- video area --> 
+		<video id="video-area" width="120" height="68" src="" autoplay loop> 
+		</video> 
+		
+		<!-- options --> 
+		<nav id="options-elem"> 
+			<h2>OPTIONS</h2> 
+			<section class="nav-column-section"> 
+				<h3>HEIGHT MAP DEPTH</h3> 
+				<input type="range" class="input-range" id="input-range-depth"/> 
+			</section> 
+			<section class="nav-column-section"> 
+				<h3>CAMERA DISTANCE</h3> 
+				<input type="range" class="input-range" id="input-range-zoom"/> 
+			</section> 
+			<section class="nav-column-section"> 
+				<h3>INVERT HEIGHT MAP</h3> 
+				<a href="#" target="_self" class="button" id="invert-on">ON</a> <a href="#" target="_self" class="standard button" id="invert-off">OFF</a> 
+			</section> 
+			<section class="nav-column-section"> 
+				<h3>BACKGROUND</h3> 
+				<a href="#" target="_self" class="button" id="bg-black">BLACK</a> <a href="#" target="_self" class="standard button" id="bg-white">WHITE</a> 
+			</section> 
+			<section class="nav-column-section"> 
+				<h3>ORIENTATION (Chromium)</h3> 
+				<a href="#" target="_self" class="button" id="orientation-on">ON</a> <a href="#" target="_self" class="standard button" id="orientation-off">OFF</a> 
+			</section> 
+		</nav> 
+		
+		<!-- three canvas container --> 
+		<div id="three-canvas-container" width="800" height="400"> 
+		</div> 
+		
+		</div>
+		</div>
+		
+		
+	</body> 
+ 
+</html>

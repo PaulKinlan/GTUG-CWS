@@ -1,0 +1,34 @@
+{
+  "extName" : {
+    "message" : "Presentation for Google Chrome Extensions",
+    "description" : "Extension name."
+  },
+  "extDesc" : {
+    "message" : "A Google Chrome extension that contains a presentation about Google Chrome extensions. Meta!",
+    "description" : "Extension description."
+  },
+  "slidesPageTitle" : {
+    "message" : "Chrome!",
+    "description" : "Page title for the slides page."
+  },
+  "startPreso" : {
+    "message" : "Start Presentation",
+    "description" : "Link text to open the slide page."
+  },
+  "slidesTitle" : {
+    "message" : "Google Chrome Extensions",
+    "description" : "Presentation title"
+  },
+  "creditsTitle" : {
+    "message" : "Credits"
+  },
+  "creditsDescription" : {
+    "message" : "The following materials were used in this presentation."
+  },
+  "fonts" : {
+    "message" : "Fonts"
+  },
+  "madeBy" : {
+    "message" : "made by"
+  }
+}

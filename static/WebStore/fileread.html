@@ -1,0 +1,29 @@
+
+<style> 
+  section { background: #efefef; padding: 0.2em 1em; }
+  #imageChoice, #imageChoice * { display: block; font-size: 12pt; margin: 0 0 1em 0; }
+  img { width: 80px; height: 80px; margin: 10px; }
+</style> 
+<script> 
+  window.onload = function() {
+    document.getElementById("images").onchange = function(ev) {
+      for (var i=0; i<this.files.length; i++) {
+        (function(file) {
+          var fileReader = new FileReader();
+          fileReader.onloadend = function() {
+            var img = document.createElement("img");  
+            img.src = fileReader.result;
+            console.log(img.src);
+            document.body.appendChild(img);
+          };
+          fileReader.readAsDataURL(file);
+        })(this.files[i]);
+      }
+    }
+  };
+</script> 
+ 
+<section id="imageChoice"> 
+  <p>Images:</p> 
+  <p><input type="file" id="images" multiple></p> 
+</section>

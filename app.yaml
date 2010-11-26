@@ -1,0 +1,16 @@
+application: gdd-2010
+runtime: python
+version: 1
+api_version: 1
+
+handlers:
+- url: /
+  static_files: static/index.html
+  upload: static/index.html
+- url: /Extension.crx
+  static_files: static/Extension.crx
+  upload: static/Extension.crx
+  mime_type: application/x-chrome-extension
+- url: /(.+)
+  static_files: static/\1
+  upload: static/(.+)
