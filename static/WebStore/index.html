@@ -333,36 +333,198 @@ Modifications:
 })();
 </script>
 
+<div class="slide" id="slide-dndfiles"> 
+  <header>Getting File Handles: Directory Upload</header> 
+  <section> 
+    <pre class="hcenter">&lt;input type="file" <b>webkitdirectory</b> /&gt;</pre> 
+  </section> 
+  <section> 
+    <ul> 
+      <li>Files in the <code>FileList</code> will have a <code>webkitRelativePath</code> property</li> 
+    </ul> 
+  </section> 
+  <section class="hcenter"> 
+    <a href="demos/upload_directory/index.html" target="_new"> 
+      <img src="static/images/folder.png" class="clickable"/> 
+    </a> 
+  </section> 
+</div>
+
 <!--
  *
- * Notifications
+ * FileSystem: requestFileSystem()
  *
--->
-<div class="slide" id="slide-notifications">
-  <header>Rich Interactions - Notifications</header>
-  <section>
-    <pre>if (window.<b>webkitNotifications</b>.<b>checkPermission</b>() == 0) {
-  window.<b>webkitNotifications</b>.<b>createNotification</b>(picture, title, text).<b>show</b>();
-} else {
-  window.<b>webkitNotifications</b>.<b>requestPermission</b>();
-}</pre>
-    <p class="callout notificationText">
-      This presentation currently <strong class="displayBox">X</strong>
-      permission to display notifications.
-    </p>
-    <p class='hcenter'>
-      <button class='showButton'>Show a notification</button>
-      <button class='requestButton'>Request permission</button>
-    </p>
-  </section>
-</div>
-<script>
-$(document).ready(function() {
-  var slide = document.getElementById('slide-notifications');
-  var nm = new NotificationManager(slide);
-});
-</script>
-
+--> 
+<div class="slide"> 
+  <header><code>requestFileSystem();</code></header> 
+  <section> 
+    <pre><b>window.requestFileSystem</b>(
+  TEMPORARY,        // persistent vs. temporary storage
+  1024 * 1024,      // size (bytes) of needed space
+  initFs,           // success callback
+  opt_errorHandler  // opt. error callback, denial of access
+);</pre> 
+    <ul style="font-size: 90%" data-build> 
+      <li><code>TEMPORARY</code> storage
+        <ul> 
+          <li>Meant for caching</li> 
+          <li>Data can be deleted at the UA's convenience</li> 
+          <li>(e.g. to deal with a shortage of disk space)</li> 
+        </ul> 
+      </li> 
+      <li><code>PERSISTENT</code> storage
+        <ul> 
+          <li>UA should require permission to use</li> 
+          <li>Data should not be deleted by UA w/o user intervention
+            <ul> 
+              <li>...but app can delete at will</li> 
+            </ul> 
+          </li> 
+        </ul> 
+      </li> 
+    </ul> 
+  </section> 
+</div> 
+ 
+ 
+<!--
+ *
+ * FileSystem: Fetching a file by name
+ *
+--> 
+<div class="slide"> 
+  <header>Fetching a file by name</header> 
+  <aside class="note"> 
+    <section> 
+      <pre style="font-size:16px;padding:0;border:none;background:none"> 
+function errorHandler(e) {
+  switch (e.code) {
+    case FileError.QUOTA_EXCEEDED_ERR:
+      ...
+    case FileError.NOT_FOUND_ERR:
+      ...
+  }
+}</pre> 
+    </section> 
+  </aside> 
+  <section> 
+    <pre style="font-size:20px;"> 
+function initFs(fs) {
+ 
+  <b>fs.root.getFile</b>('logFile.txt', {create: true}, function(fileEntry) {
+ 
+    // <b>fileEntry.isFile</b> == true
+    // <b>fileEntry.name</b> == 'logFile.txt'
+    // <b>fileEntry.fullPath</b> == '/logFile.txt'
+ 
+    // Get a File obj
+    <b>fileEntry.file</b>(function(file) { /* TODO: Use FileReader */ }, errorHandler);
+ 
+    // <b>fileEntry.remove</b>(function() {}, errorHandler);
+    // <b>fileEntry.moveTo</b>(...);
+    // <b>fileEntry.copyTo</b>(...);
+    // <b>fileEntry.getParent</b>(function(dirEntry) {}, errorHandler);
+ 
+  }, errorHandler);
+ 
+}
+</pre> 
+  </section> 
+</div> 
+ 
+ 
+<!--
+ *
+ * FileSystem: Fetching a directory by name
+ *
+--> 
+<div class="slide"> 
+  <header>Fetching a directory by name</header> 
+  <section> 
+    <pre style="font-size:22px;"> 
+function initFs(fs) {
+ 
+  <b>fs.root.getDirectory</b>('myFolder', {create: true, <b>exclusive: true</b>},
+    function (dirEntry) {
+ 
+      // <b>dirEntry.isDirectory</b> == true
+ 
+      // Remove the directory
+      <b>dirEntry.removeRecursively</b>(function() {
+        console.log('Well, that was pointless!');
+      }, errorHandler);
+ 
+      // <b>dirEntry.getFile</b>(...);
+      // <b>dirEntry.getDirectory</b>(...);
+ 
+    }, errorHandler);
+ 
+}
+</pre> 
+  </section> 
+</div> 
+ 
+ 
+<!--
+ *
+ * FileSystem: Reading a directory's contents
+ *
+--> 
+<div class="slide"> 
+  <header>Reading directory contents</header> 
+  <section> 
+    <pre style="font-size:24px;"> 
+function initFs(fs) {
+ 
+  var root = <b>fs.root</b>;  // A DirectoryEntry itself
+ 
+  var dirReader = root.<b>createReader</b>(); // DirectoryReader
+  <b>dirReader.readEntries</b>(function(entries) {
+    for (var i = 0, entry; entry = entries[i]; ++i) {
+      console.log(<b>entry.name</b>, <b>entry.isFile</b>, <b>entry.isDirectory</b>);
+    }
+  }, errorHandler);
+ 
+}
+</pre> 
+  </section> 
+</div> 
+ 
+ 
+<!--
+ *
+ * FileSystem: Writing a file
+ *
+--> 
+<div class="slide"> 
+  <header>Writing a file ( <code>FileWriter</code> )</header> 
+  <section> 
+    <pre style="font-size:20px;"> 
+function initFs(fs) {
+ 
+  fs.root.getFile('logFile.txt', {create: true}, function(fileEntry) {
+ 
+    <b>fileEntry.createWriter</b>(function(<b>writer</b>) {  // FileWriter
+ 
+        <b>writer.onwrite</b> = function(e) {
+          console.log('Write completed.');
+        };
+ 
+        <b>writer.onerror</b> = function(e) {
+          console.log('Write failed: ' + e);
+        };
+ 
+        var bb = new BlobBuilder();
+        bb.append('Lorem ipsum');
+        <b>writer.write</b>(bb.getBlob('text/plain'));
+ 
+    }, errorHandler);
+  }
+ 
+}
+</pre> 
+  </section> 
+</div> 
 <div class="slide">
   <header>More ways to make Web Apps special</header>
   <section class="hbox boxcenter">
@@ -440,7 +602,7 @@ $(document).ready(function() {
     <div class="noflex vbox boxcenter">
       <!-- Millions of users have a direct channel to your app! -->
       <h3>Chrome Web Store</h3>
-      <p>Making complex things simple</p>
+      <p>And The Netherlands</p>
     </div>
   </section>
 </div>
@@ -474,7 +636,7 @@ $(document).ready(function() {
 </div>
 
 <div class="slide">
-  <header>Make it easy for developers to find users</header>
+  <header>Make it easy for users to run apps</header>
   <section class="hbox boxcenter">
     <div class="noflex vbox boxcenter">
       <img src="static/images/cws.jpg">
@@ -596,26 +758,35 @@ $(document).ready(function() {
   </section> 
 </div> 
 
-<div class="slide">
-  <section class="hbox boxcenter">
-    <header>Super easy way to package your hosted app</header>
-    <div class="noflex vbox boxcenter">
-    <h1><a href="http://appmator.appspot.com/">Appmator</a></h1>
-    </div>
-  </section>
-</div>
-
-<div class="slide">
-  <header>Get Started</header>
-  <section class="hbox boxcenter">
-    <div class="noflex vbox boxcenter">
-      <p style="text-align: center;">Develop, Compress, <a href="https://chrome.google.com/extensions/developer/dashboard" target="_blank">Upload</a> and Publish</p>
-      <div style="margin-top: 10px;">
-       <img src="/WebStore/static/images/compress.png" style="float:left;"/><img src="/WebStore/static/images/addapp.png" />
-      </div>
-    </div>
-  </section>
-</div>
+<div class="slide"> 
+  <section class="hbox boxcenter"> 
+    <header>Right, let's make a hosted app!</header> 
+    <div class="noflex vbox boxcenter"> 
+    <ul> 
+      <li><code>Make manifest.json</code></li> 
+      <li><code>Add the code</code></li> 
+      <li><code>Import in Dev Mode</code></li> 
+      <li><code>Pack it</code></li> 
+      <li><code>Submit it</code></li> 
+    </ul> 
+    </div> 
+  </section> 
+</div> 
+ 
+<div class="slide"> 
+  <section class="hbox boxcenter"> 
+    <header>OR use AppMator app (http://appmator.appspot.com)</header> 
+    <div class="noflex vbox boxcenter"> 
+    <ul> 
+      <li><s><code>Make manifest.json</code></s></li> 
+      <li><s><code>Add the code</code></s></li> 
+      <li><s><code>Import in Dev Mode</code></s></li> 
+      <li><s><code>Pack it</code></s></li> 
+      <li><code>Submit it</code></li> 
+    </ul> 
+    </div> 
+  </section> 
+</div> 
 
 <div class="slide">
   <header>Simple Licensing</header>
