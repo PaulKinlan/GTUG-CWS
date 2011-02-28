@@ -41,11 +41,11 @@ Modifications:
         -webkit-box-reflect:below 5px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(0.5, transparent), to(white));
       }
     </style>
-    <!--<link href='http://fonts.googleapis.com/css?family=Reenie+Beanie&subset=latin' rel='stylesheet' type='text/css'>
-    --><link rel="stylesheet" href="static/css/slide-presentation.css" />
+    <link href='http://fonts.googleapis.com/css?family=Reenie+Beanie&subset=latin' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="static/css/slide-presentation.css" />
     <link rel="stylesheet" href="static/css/prettify.css" />
     <link rel="stylesheet" href="static/css/slide-content.css" />
-    <!--<link href='http://fonts.googleapis.com/css?family=Molengo|Yanone+Kaffeesatz|Droid+Serif|OFL+Sorts+Mill+Goudy+TT|Inconsolata|Lobster|Cantal|Josefin+Sans+Std+Light' rel='stylesheet' type='text/css'>-->
+    <link href='http://fonts.googleapis.com/css?family=Molengo|Yanone+Kaffeesatz|Droid+Serif|OFL+Sorts+Mill+Goudy+TT|Inconsolata|Lobster|Cantal|Josefin+Sans+Std+Light' rel='stylesheet' type='text/css'>
   </head>
   <body>
     <div class="presentation">
@@ -74,7 +74,7 @@ Modifications:
   <section class="center">
     <div class="titleContent">
       <h2 class="titleTitle">
-        Web Apps and the Chrome Web Store
+        HTML5 Web Apps and the Chrome Web Store
       </h2>
       
      
@@ -394,19 +394,6 @@ Modifications:
 --> 
 <div class="slide"> 
   <header>Fetching a file by name</header> 
-  <aside class="note"> 
-    <section> 
-      <pre style="font-size:16px;padding:0;border:none;background:none"> 
-function errorHandler(e) {
-  switch (e.code) {
-    case FileError.QUOTA_EXCEEDED_ERR:
-      ...
-    case FileError.NOT_FOUND_ERR:
-      ...
-  }
-}</pre> 
-    </section> 
-  </aside> 
   <section> 
     <pre style="font-size:20px;"> 
 function initFs(fs) {
@@ -524,7 +511,16 @@ function initFs(fs) {
 }
 </pre> 
   </section> 
-</div> 
+</div>
+
+<div class="slide">
+  <header>In the background</header>
+  <section class="hbox boxcenter">
+   <div class="noflex vbox boxcenter">
+<pre>window.open("apage.html#", "background", "background");</pre>
+  </div>
+  </section>
+</div>
 <div class="slide">
   <header>More ways to make Web Apps special</header>
   <section class="hbox boxcenter">
@@ -627,6 +623,15 @@ function initFs(fs) {
 </div>
 
 <div class="slide">
+  <header>Your place</header>
+  <section class="hbox boxcenter">
+    <div class="noflex vbox boxcenter">
+      <img src="static/images/bbc.png" width=700>
+    </div>
+  </section>
+</div>
+
+<div class="slide">
   <header>Make it easy for users to buy apps</header>
   <section class="hbox boxcenter">
     <div class="noflex vbox boxcenter">
@@ -640,15 +645,6 @@ function initFs(fs) {
   <section class="hbox boxcenter">
     <div class="noflex vbox boxcenter">
       <img src="static/images/cws.jpg">
-  </section>
-</div>
-
-
-<div class="slide">
-  <header>Distribution</header>
-  <section class="hbox boxcenter">
-    <div class="noflex vbox boxcenter">
-      <img src="static/images/users.png" width="800">
   </section>
 </div>
 
@@ -810,6 +806,13 @@ function initFs(fs) {
     <p><a href="http://code.google.com/chrome/apps/">  code.google.com/chrome/apps/- Apps developer guide</a></p>
     <p><a href="http://code.google.com/chrome/webstore/docs/">code.google.com/chrome/webstore/docs/ - Web Store developer guide</a></p>
     </div>
+  </section>
+</div>
+
+<div class="slide">
+  <header>Thanks</header>
+  <section class="hbox boxcenter">
+    <p>@Paul_Kinlan</p>
   </section>
 </div>
       </div> <!-- slides -->
