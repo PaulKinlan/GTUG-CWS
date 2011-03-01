@@ -223,6 +223,279 @@ Modifications:
 </div>
 
 <div class="slide">
+  <header>Great, so I have a cool app. Now what? </header>
+  <section class="hbox boxcenter">
+    <div class="noflex vbox boxcenter">
+      <h1>Get lots of users</h1>
+    </div>
+  </section>
+</div>
+
+<div class="slide">
+  <section class="hbox boxcenter">
+    <header>Users: Finding great apps is hard!</header>
+    <div class="noflex vbox boxcenter" style="height:500px; text-align:center">
+      <img src="static/images/userflow.png" >
+    </div>
+  </section>
+</div>
+
+<div class="slide">
+  <section class="hbox boxcenter">
+    <header>What you want to be doing</header>
+    <div class="noflex vbox boxcenter">
+      <img src="static/images/idealgetusers.png" width=550>
+    </div>
+  </section>
+</div>
+
+<div class="slide">
+  <section class="hbox boxcenter">
+    <header>This is what you actually do!</header>
+    <div class="noflex vbox boxcenter">
+      <img src="static/images/gettingusers.png" width=700>
+    </div>
+  </section>
+</div>
+
+<div class="slide">
+  <section class="hbox boxcenter">
+    <header>But where do you make the money!</header>
+    <div class="noflex vbox boxcenter">
+      <p>Now for a little story.</p>
+    </div>
+  </section>
+</div>
+
+<div class="slide">
+  <section class="hbox boxcenter">
+    <header>I learnt</header>
+    <div class="noflex vbox boxcenter">
+      <p style="text-align: center">If <strong>your app is good</strong>, users <br>will be willing to <strong>pay</strong> for it!</p>
+      <p>But It's:</p>
+      <ul>
+        <li>Hard to ask people to pay</li>
+        <li>Hard to integrate into your app</li>
+      </ul>
+    </div>
+  </section>
+</div>
+
+<div class="slide">
+  <section class="hbox boxcenter">
+    <header>We have a great platform in HTML, but how do we get found?</header>
+    <div class="noflex vbox boxcenter">
+      <h3>Chrome Web Store</h3>
+      <p>And The Netherlands</p>
+    </div>
+  </section>
+</div>
+
+<div class="slide">
+  <header>Discovery</header>
+  <section class="hbox boxcenter">
+    <div class="noflex vbox boxcenter">
+      <img src="static/images/ebuddy.png" width=700>
+    </div>
+  </section>
+</div>
+
+
+<div class="slide">
+  <header>Discovery</header>
+  <section class="hbox boxcenter">
+    <div class="noflex vbox boxcenter">
+      <img src="static/images/shuffler.png" width=700>
+    </div>
+  </section>
+</div>
+
+<div class="slide">
+  <header>Your place</header>
+  <section class="hbox boxcenter">
+    <div class="noflex vbox boxcenter">
+      <img src="static/images/bbc.png" width=700>
+    </div>
+  </section>
+</div>
+
+<div class="slide">
+  <header>Make it easy for users to buy apps</header>
+  <section class="hbox boxcenter">
+    <div class="noflex vbox boxcenter">
+      <img src="static/images/buy.png" width=700>
+    </div>
+  </section>
+</div>
+
+<div class="slide">
+  <header>Make it easy for users to run apps</header>
+  <section class="hbox boxcenter">
+    <div class="noflex vbox boxcenter">
+      <img src="static/images/cws.jpg">
+  </section>
+</div>
+
+<div class="slide">
+  <header>Make it easy for developers to sell apps</header>
+  <section class="hbox boxcenter">
+    <div class="noflex vbox boxcenter">
+    <img src="static/images/pricing.png">
+    </div>
+  </section>
+</div>
+
+<div class="slide">
+  <section class="hbox boxcenter"><div class="noflex vbox boxcenter"><h3>How do I get my app into the store?</h3></div></section>
+</div>
+
+
+<div class="slide">
+  <header>It Depends</header>
+  <section class="hbox boxcenter">
+    <div class="noflex vbox boxcenter">
+    <img src="static/images/chrome-venn.jpg">
+    </div>
+  </section>
+</div>
+
+
+<div class="slide"> 
+  <section class="hbox boxcenter"> 
+    <div class="noflex vbox boxcenter"> 
+     <h2>Hosted Apps</h2> 
+  </div> 
+  </section> 
+</div> 
+ 
+<div class="slide"> 
+  <header>manifest.json, again</header> 
+  <section class="hbox boxcenter"> 
+    <div class="noflex vbox boxcenter"> 
+<pre class="prettyprint">{
+  "name" : "Hacker News Reader",
+  "description" : "A reader for the Hacker News website",
+  "version": "1",
+  "icons": {
+    "24": "logo24.png", "128": "logo.png"
+  },
+  "permissions": [
+    "unlimitedStorage"
+  ],
+  "app" : {
+    "urls": ["http://project.mahemoff.com/hn"],
+    "launch": {
+      <strong>"web_url": "http://project.mahemoff.com/hn"</strong> 
+    }
+  }
+}</pre> 
+    </div> 
+  </section> 
+</div> 
+ 
+<div class="slide"> 
+  <section class="hbox boxcenter"> 
+    <div class="noflex vbox boxcenter"> 
+     <h2>Packaged Apps</h2> 
+  </div> 
+  </section> 
+</div> 
+ 
+<div class="slide"> 
+  <header>manifest.json for a packaged app</header> 
+  <section class="hbox boxcenter"> 
+    <div class="noflex vbox boxcenter"> 
+<pre class="prettyprint">{
+  "name" : "Encyclomapedia",
+  "description" : "A reference app",
+  "version": "1",
+  "icons": {
+    "24": "logo24.png", "128": "logo.png"
+  },
+  "permissions": [
+    "unlimitedStorage"
+  ],
+  "app" : {
+    "urls": ["http://wikipedia.com", "http://news.google.com"],
+    "launch": {
+      <strong>"local_path": "index.html"</strong> 
+    }
+  }
+}</pre> 
+    </div> 
+  </section> 
+</div> 
+ 
+<div class="slide"> 
+  <header>Packaged Apps can do Extension Stuff</header> 
+  <section class="hbox boxcenter"> 
+    <div class="noflex vbox boxcenter"> 
+      <ul> 
+        <li>Cross-domain calls</li> 
+        <li>Content scripts</li> 
+        <li>Idle detection</li> 
+        <li>Context menu</li> 
+        <li>Backround page</li> 
+        <li>... in fact, anything extensions can do! (Well, almost.)</li> 
+      </ul> 
+  </div> 
+  </section> 
+</div> 
+
+<div class="slide"> 
+  <section class="hbox boxcenter"> 
+    <header>Right, let's make a hosted app!</header> 
+    <div class="noflex vbox boxcenter"> 
+    <ul> 
+      <li><code>Make manifest.json</code></li> 
+      <li><code>Add the code</code></li> 
+      <li><code>Import in Dev Mode</code></li> 
+      <li><code>Pack it</code></li> 
+      <li><code>Submit it</code></li> 
+    </ul> 
+    </div> 
+  </section> 
+</div> 
+ 
+<div class="slide"> 
+  <section class="hbox boxcenter"> 
+    <header>OR use AppMator app (http://appmator.appspot.com)</header> 
+    <div class="noflex vbox boxcenter"> 
+    <ul> 
+      <li><s><code>Make manifest.json</code></s></li> 
+      <li><s><code>Add the code</code></s></li> 
+      <li><s><code>Import in Dev Mode</code></s></li> 
+      <li><s><code>Pack it</code></s></li> 
+      <li><code>Submit it</code></li> 
+    </ul> 
+    </div> 
+  </section> 
+</div> 
+
+<div class="slide">
+  <header>Simple Licensing</header>
+  <section class="hbox boxcenter">
+    <div class="noflex vbox boxcenter">
+      <ul>
+        <li>OpenID</li>
+        <li>OAuth</li>
+      </ul>
+      <p style="text-align: center">Easy as <strong>1.</strong>, <strong>2.</strong>, <strong>3.</strong> </p>
+      <img src="static/images/Checklicense.png">
+    </div>
+  </section>
+</div>
+
+<div class="slide">
+  <header>Some more bits</header>
+  <section class="hbox boxcenter">
+    <div class="noflex vbox boxcenter">
+      Building great apps.
+    </div>
+  </section>
+</div>
+
+<div class="slide">
   <header>What makes Web Apps special?</header>
   <section class="hbox boxcenter">
     <div class="noflex vbox boxcenter">
@@ -236,7 +509,7 @@ Modifications:
 <div class="slide">
   <section class="hbox boxcenter">
     <div class="noflex vbox boxcenter">
-      <h3>Practical Tips for an Awesome UX</h3>
+      <h3>Things to make things awesome!</h3>
     </div>
   </section>
 </div>
@@ -534,269 +807,7 @@ function initFs(fs) {
   </section>
 </div>
 
-<div class="slide">
-  <header>Great, so I have a cool app. Now what? </header>
-  <section class="hbox boxcenter">
-    <div class="noflex vbox boxcenter">
-      <h1>Get lots of users</h1>
-    </div>
-  </section>
-</div>
 
-<div class="slide">
-  <section class="hbox boxcenter">
-    <header>Users: Finding great apps is hard!</header>
-    <div class="noflex vbox boxcenter" style="height:500px; text-align:center">
-      <img src="static/images/userflow.png" >
-    </div>
-  </section>
-</div>
-
-<div class="slide">
-  <section class="hbox boxcenter">
-    <header>What you want to be doing</header>
-    <div class="noflex vbox boxcenter">
-      <img src="static/images/idealgetusers.png" width=550>
-    </div>
-  </section>
-</div>
-
-<div class="slide">
-  <section class="hbox boxcenter">
-    <header>Developers: Getting lots of users is hard!</header>
-    <div class="noflex vbox boxcenter">
-      <img src="static/images/gettingusers.png" width=700>
-    </div>
-  </section>
-</div>
-
-<div class="slide">
-  <section class="hbox boxcenter">
-    <header>Making money is hard!</header>
-    <div class="noflex vbox boxcenter">
-      <p>Now for a little story.</p>
-    </div>
-  </section>
-</div>
-
-<div class="slide">
-  <section class="hbox boxcenter">
-    <header>I learnt</header>
-    <div class="noflex vbox boxcenter">
-      <p style="text-align: center">If <strong>your app is good</strong>, users <br>will be willing to <strong>pay</strong> for it!</p>
-      <p>But It's:</p>
-      <ul>
-        <li>Hard to ask people to pay</li>
-        <li>Hard to integrate into your app</li>
-      </ul>
-    </div>
-  </section>
-</div>
-
-<div class="slide">
-  <section class="hbox boxcenter">
-    <div class="noflex vbox boxcenter">
-      <!-- Millions of users have a direct channel to your app! -->
-      <h3>Chrome Web Store</h3>
-      <p>And The Netherlands</p>
-    </div>
-  </section>
-</div>
-
-<div class="slide">
-  <header>Discovery</header>
-  <section class="hbox boxcenter">
-    <div class="noflex vbox boxcenter">
-      <img src="static/images/ebuddy.png" width=700>
-    </div>
-  </section>
-</div>
-
-
-<div class="slide">
-  <header>Discovery</header>
-  <section class="hbox boxcenter">
-    <div class="noflex vbox boxcenter">
-      <img src="static/images/shuffler.png" width=700>
-    </div>
-  </section>
-</div>
-
-<div class="slide">
-  <header>Your place</header>
-  <section class="hbox boxcenter">
-    <div class="noflex vbox boxcenter">
-      <img src="static/images/bbc.png" width=700>
-    </div>
-  </section>
-</div>
-
-<div class="slide">
-  <header>Make it easy for users to buy apps</header>
-  <section class="hbox boxcenter">
-    <div class="noflex vbox boxcenter">
-      <img src="static/images/buy.png" width=700>
-    </div>
-  </section>
-</div>
-
-<div class="slide">
-  <header>Make it easy for users to run apps</header>
-  <section class="hbox boxcenter">
-    <div class="noflex vbox boxcenter">
-      <img src="static/images/cws.jpg">
-  </section>
-</div>
-
-<div class="slide">
-  <header>Make it easy for developers to sell apps</header>
-  <section class="hbox boxcenter">
-    <div class="noflex vbox boxcenter">
-    <img src="static/images/pricing.png">
-    </div>
-  </section>
-</div>
-
-<div class="slide">
-  <section class="hbox boxcenter"><div class="noflex vbox boxcenter"><h3>How do I get my app into the store?</h3></div></section>
-</div>
-
-
-<div class="slide">
-  <header>It Depends</header>
-  <section class="hbox boxcenter">
-    <div class="noflex vbox boxcenter">
-    <img src="static/images/chrome-venn.jpg">
-    </div>
-  </section>
-</div>
-
-
-<div class="slide"> 
-  <section class="hbox boxcenter"> 
-    <div class="noflex vbox boxcenter"> 
-     <h2>Hosted Apps</h2> 
-  </div> 
-  </section> 
-</div> 
- 
-<div class="slide"> 
-  <header>manifest.json, again</header> 
-  <section class="hbox boxcenter"> 
-    <div class="noflex vbox boxcenter"> 
-<pre class="prettyprint">{
-  "name" : "Hacker News Reader",
-  "description" : "A reader for the Hacker News website",
-  "version": "1",
-  "icons": {
-    "24": "logo24.png", "128": "logo.png"
-  },
-  "permissions": [
-    "unlimitedStorage"
-  ],
-  "app" : {
-    "urls": ["http://project.mahemoff.com/hn"],
-    "launch": {
-      <strong>"web_url": "http://project.mahemoff.com/hn"</strong> 
-    }
-  }
-}</pre> 
-    </div> 
-  </section> 
-</div> 
- 
-<div class="slide"> 
-  <section class="hbox boxcenter"> 
-    <div class="noflex vbox boxcenter"> 
-     <h2>Packaged Apps</h2> 
-  </div> 
-  </section> 
-</div> 
- 
-<div class="slide"> 
-  <header>manifest.json for a packaged app</header> 
-  <section class="hbox boxcenter"> 
-    <div class="noflex vbox boxcenter"> 
-<pre class="prettyprint">{
-  "name" : "Encyclomapedia",
-  "description" : "A reference app",
-  "version": "1",
-  "icons": {
-    "24": "logo24.png", "128": "logo.png"
-  },
-  "permissions": [
-    "unlimitedStorage"
-  ],
-  "app" : {
-    "urls": ["http://wikipedia.com", "http://news.google.com"],
-    "launch": {
-      <strong>"local_path": "index.html"</strong> 
-    }
-  }
-}</pre> 
-    </div> 
-  </section> 
-</div> 
- 
-<div class="slide"> 
-  <header>Packaged Apps can do Extension Stuff</header> 
-  <section class="hbox boxcenter"> 
-    <div class="noflex vbox boxcenter"> 
-      <ul> 
-        <li>Cross-domain calls</li> 
-        <li>Content scripts</li> 
-        <li>Idle detection</li> 
-        <li>Context menu</li> 
-        <li>Backround page</li> 
-        <li>... in fact, anything extensions can do! (Well, almost.)</li> 
-      </ul> 
-  </div> 
-  </section> 
-</div> 
-
-<div class="slide"> 
-  <section class="hbox boxcenter"> 
-    <header>Right, let's make a hosted app!</header> 
-    <div class="noflex vbox boxcenter"> 
-    <ul> 
-      <li><code>Make manifest.json</code></li> 
-      <li><code>Add the code</code></li> 
-      <li><code>Import in Dev Mode</code></li> 
-      <li><code>Pack it</code></li> 
-      <li><code>Submit it</code></li> 
-    </ul> 
-    </div> 
-  </section> 
-</div> 
- 
-<div class="slide"> 
-  <section class="hbox boxcenter"> 
-    <header>OR use AppMator app (http://appmator.appspot.com)</header> 
-    <div class="noflex vbox boxcenter"> 
-    <ul> 
-      <li><s><code>Make manifest.json</code></s></li> 
-      <li><s><code>Add the code</code></s></li> 
-      <li><s><code>Import in Dev Mode</code></s></li> 
-      <li><s><code>Pack it</code></s></li> 
-      <li><code>Submit it</code></li> 
-    </ul> 
-    </div> 
-  </section> 
-</div> 
-
-<div class="slide">
-  <header>Simple Licensing</header>
-  <section class="hbox boxcenter">
-    <div class="noflex vbox boxcenter">
-      <ul>
-        <li>OpenID</li>
-        <li>OAuth</li>
-      </ul>
-      <p style="text-align: center">Easy as <strong>1.</strong>, <strong>2.</strong>, <strong>3.</strong> </p>
-      <img src="static/images/Checklicense.png">
-    </div>
-  </section>
-</div>
 
 <div class="slide">
   <header>Links</header>
