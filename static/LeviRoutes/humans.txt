@@ -1,0 +1,3 @@
+These slides were created by Mike Mahemoff (@mahemoff) and Paul Kinlan (@paul_kinlan) using plain old HTML, CSS and Javascript .... oh and a lot of love.
+
+The HTML framework was kindly produced by Marcin Wichery (Google UX dude).

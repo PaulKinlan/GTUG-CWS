@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+
+<!--
+  Google I/O 2011 HTML slides template
+  
+  Created by Luke Mahé (lukem@google.com) 
+         and Marcin Wichary (mwichary@google.com).
+-->
+
+<html>
+  <head>
+    <title>The future of web apps</title>
+    <meta charset='utf-8' />
+    <script
+      src='slides.js'></script>
+    <script src="https://raw.github.com/PaulKinlan/leviroutes/master/routes-min.js"></script>
+  </head>
+  
+  <style>
+    /* Your individual styles here, or just use inline styles if that’s
+       what you want. */
+    
+    li.tick:after {
+      content:url(images/tick.png);
+      padding-left: 5px;
+      width: 3em;
+      height: 3em;
+    }
+    
+    .slides > article::before {
+      font-size: 18px;
+      display: block;
+      position: absolute;
+      left: 15px;
+      bottom: 15px;
+      content: "Ask questions if you don't agree; http://github.com/PaulKinlan/LeviRoutes"; 
+    }
+    
+   .fill h4 {
+     display: inline;
+     position: absolute;
+     bottom: 50px;
+     padding: 15px; 
+     font-size: 2em;
+     line-height: 1em;
+   }
+
+   .dark {
+     background-color: rgba(0,0,0, 0.8);
+     color: white;
+   } 
+  </style>
+
+  <body style='display: none'>
+
+    <section class='slides'>
+      
+      <article>
+      <h1>
+        Building Web-apps responsive to urls. 
+      </h1>
+        <p>
+          Paul Kinlan (@paul_kinlan)<br/>
+          <br>
+          July 1st, 2011 <br>
+          </p> 
+          <p>Twitter: #webintents</p>
+      </article>
+
+
+      <article class="fill">
+        <h4 class="dark">
+         What's the problem?
+        </h4>
+        <img src="images/problem.jpg">
+      </article>
+
+      <article class="fill">
+        <img src="images/problem1.jpg">
+      </article>
+
+      <article>
+        <h2>HTML5 History</h2>
+      </article>      
+
+      <article>
+        <pre>window.addEventListener("popstate", function(e) {
+  if(document.location == "/pk") {
+     // Load my articles
+  }
+  else if(document.location == "/mm") {
+    // Load Mikes articles
+  }
+  ... etc ...
+});</pre>
+      <h2>We can't build apps this way</h2>
+      </article>
+
+      <article>
+        <pre>window.history.pushState("Title", undefined, "/page1.html");
+
+window.addEventListener("popstate", function() {
+  // Why you no fire?
+});</pre>
+      <p>Developers want to know when the URL changes.</p>
+        <h2>Plus it only fires when the user navigates through history</h2>
+      </article>
+
+      <article>
+         <h2>Levi Routes</h2>
+      </article>
+      
+      <article>
+      <h3>Handles URL Changes</h3>
+      <pre>var app = new routes();
+
+app.get("/:category", function(req) {
+  fetchCategory(req.params.category, "json");
+});
+
+app.get("/:category/:article", function(req) {
+  fetchArticle(req.params.category, req.params.article);
+});</pre>
+      </article>
+
+      <article>
+        <h3>Fires Events when the URL changes.</h3>
+        <p>onpopstate doesn't do this</p>
+      </article>
+
+      <article>
+      <h3>It can route Forms</h3>
+      <pre>&lt;form method="post" action="/test"&gt;
+  &lt;input type="text" name="email" /&gt;
+&lt;/form&gt;</pre>
+<pre>app.post("/test", function(req) {
+  alert("posting form", req.values.email);
+});</pre>
+      </article>
+      
+      <article>
+        <h3>
+          Thank you!
+        </h3>
+      </article>
+      
+    </section>
+  </body>
+</html>
