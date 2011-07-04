@@ -1,4 +1,4 @@
-application: gtug-cws
+application: fronteers-cws
 runtime: python
 version: 1
 api_version: 1

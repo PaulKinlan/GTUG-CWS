@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+
+<!--
+  Google I/O 2011 HTML slides template
+  
+  Created by Luke Mahé (lukem@google.com) 
+         and Marcin Wichary (mwichary@google.com).
+-->
+
+<html>
+  <head>
+    <title>Mobile Web Development: Zero to Hero</title>
+    <meta charset='utf-8' />
+    <script
+      src='slides.js'></script>
+  </head>
+  
+  <style>
+    /* Your individual styles here, or just use inline styles if that’s
+       what you want. */
+    
+    li.tick:after {
+      content:url(images/tick.png);
+      padding-left: 5px;
+      width: 3em;
+      height: 3em;
+    }
+    
+    .slides > article::before {
+      font-size: 18px;
+      display: block;
+      position: absolute;
+      left: 15px;
+      bottom: 15px;
+      content: "Ask questions on: goo.gl/sHSgQ and Feedback: goo.gl/VRi5f";
+    }
+    
+   .fill h4 {
+     display: inline;
+     position: absolute;
+     bottom: 50px;
+     padding: 15px; 
+     font-size: 2em;
+     line-height: 1em;
+     background-color: rgba(255, 255, 255, 0.8);
+   } 
+  </style>
+
+  <body style='display: none'>
+
+    <section class='slides'>
+      
+      <!-- Your slides (<article>s) go here. Delete or comment out the
+           slides below. -->
+      
+      <article class='biglogo'>
+      </article>
+      
+      <article>
+        <h2>Watch this presentation</h2>
+        <iframe width="560" height="349" src="http://www.youtube.com/embed/vV85dNeGRhY" frameborder="0" allowfullscreen style="width:560px; height:349px;"></iframe>
+      </article>
+      
+      <article>
+        <h1>
+          Mobile Web Development:
+          <br>
+          Zero to Hero
+        </h1>
+        <p>
+        Mike Mahemoff (@mahemoff)<br/>Paul Kinlan (@paul_kinlan)<br/>
+          <br>
+          May 11, 2011 <br>
+          
+          <p>Twitter: #chrome</p>
+          <p style="position: absolute; top: 0; right: 200px; width: 250px;">Feedback: goo.gl/VRi5f</p>
+          <img src="https://chart.googleapis.com/chart?chs=500x500&cht=qr&chl=www.speakermeter.com/talks/mobile-web-development/&choe=UTF-8" style="position: absolute; top: 0; right: 0; width: 250px;">
+        </p>
+      </article>
+
+
+      <article class="fill">
+        <h3>
+         HTML5 is here. And it's mobile.
+        </h3>
+        <img src="images/html5logo.png">
+      </article>
+
+      <article class="fill">
+        <h3>
+        Mobile is awesome, right?
+        </h3>
+        <h4>Convenient</h4>
+        <img src="images/convienient.jpg">
+      </article>
+
+      <article class="fill">
+        <h3>
+        Mobile is awesome, right?
+        </h3>
+        <h4>Personal</h4>
+        <img src="images/personal.jpg">
+        <div class='source' style="color: white;">
+          Source: http://www.flickr.com/photos/yoko69/3313010009/
+        </div>
+      </article>
+      
+      <article class="fill">
+        <h3>
+        Mobile is awesome, right?
+        </h3>
+        <h4>Natural</h4>
+        <img src="images/natural.jpg">
+      </article>
+      
+      <article class="fill">
+        <h3>
+        Mobile is awesome, right?
+        </h3>
+        <img src="images/popular.jpg">
+        <h4>Popular</h4>
+      </article>
+      
+      <article>
+        <h3>
+        But what about you, dear developer? 
+        </h3>
+        <ul>
+          <li>Android</li>
+          <li>iOS</li>
+          <li>BlackBerry</li>
+          <li>Windows Mobile</li>
+          <li>WebOS</li>
+        </ul>
+      </article>
+      
+      <article>
+        <h3>
+        Not to mention form factors
+        </h3>
+        <ul>
+          <li>Not-so-smart-phones</li>
+          <li>Smartphones</li>
+          <li>Mini-tablets</li>
+          <li>Tablets</li>
+        </ul>
+      </article>
+
+      <article>
+        <h2>
+        The HTML5 platform runs everywhere (well, most places) 
+        </h2>
+      </article>
+      
+      <article class="fill">
+        <h3>
+          Traditional form factors
+        </h3>
+        <ul>
+          <li>Desktop</li>
+          <li>Netbook</li>
+          <li>Laptop</li>
+        </ul>
+        <img src="images/touch.jpg">
+      </article>
+
+      <article>
+        <h3>
+          Mobile form factors
+        </h3>
+        <ul>
+          <li>Phones</li>
+          <li>Smartphones</li>
+          <li>Tablets</li>
+          <li>Portable Consoles</li>
+          <li>Personal Music Players</li>
+          <li>eBook Readers</li>
+        </ul>
+      </article>
+      
+      <article>
+        <h3>
+          The HTML5 platform does it all (well, a lot of it anyway)
+        </h3>
+        <ul>
+          <li>Display</li>
+          <li>Input</li>
+          <li>Networking</li>
+          <li>Offline</li>
+          <li>And more ...</li>
+        </ul>
+      </article>
+      
+      <article class="fill">
+        <h3>
+        So it's awesome, but mobile presents challenges too ...
+        </h3>
+        <ul>
+          <li>User Experience</li>
+          <li>Developer Experience - #devexp</li>
+        </ul>
+      </article>
+
+      <article class="fill">
+        <h3>
+          Challenges of mobile web 
+        </h3>
+        <h4>Different Interaction Styles</h4>
+        <img src="images/formfactor.jpg">
+        <div class='source' style="color: white;">
+          Source: http://www.flickr.com/photos/marcfonteijn/4655088409/
+        </div>
+      </article>
+      
+     <article class="fill">
+        <h3>
+          Challenges of mobile web 
+        </h3>
+        <h4>Speed</h4>
+        <img src="images/speed.jpg">
+        <div class='source' style="color: white;">
+          Source: http://www.flickr.com/photos/fortherock/3903213484
+        </div>
+      </article>
+
+      <article class="fill">
+        <h3>
+           Challenges of mobile web 
+        </h3>
+        <h4>Offline and Flakey Connections</h4>
+        <img src="images/tunnel.jpg">
+        <div class='source' style="color: white;">
+          Source: http://www.flickr.com/photos/cld/15103741/
+        </div>
+      </article>
+      
+      <article class="fill">
+        <h3>
+           Challenges of mobile web 
+        </h3>
+        <h4>Discoverability</h4>
+        <img src="images/discovery.jpg">
+      </article>
+      
+      <article class="fill">
+        <h3 style="background-color: rgba(0,0,0, 0.5); color: white;">
+           Challenges of mobile web 
+        </h3>
+        <h4  style="background-color: rgba(0,0,0, 0.5); color: white;">Touch</h4>
+        <img src="images/touch-challenge.jpg">
+      </article>
+
+      <article class="fill">
+        <h3>
+           Challenges of mobile web 
+        </h3>
+        <h4>Screen Size</h4>
+        <img src="images/forms.jpg">
+        <div class='source' style="color: white;">
+          Source: http://www.flickr.com/photos/seanhobson/4504828599/
+        </div>
+      </article>
+      
+      <article>
+        <h2>Can we solve all of these challenges?</h2>
+      </article>
+
+      <article>
+        <h2>Can we solve <u>any</u> of these challenges?</h2>
+      </article>
+
+      <article>
+      <h2>Sorry, No</h2>
+      <h3>End of presentation</h3>
+      <p>@Mahemoff<br/>@Paul_Kinlan</p>
+      </article>
+
+      <article>
+      <h2>Of course we can</h2>
+      </article>
+
+      <article>
+        <h2>IO Reader</h2>
+        <h3>Introducing</h3>
+        
+      </article>
+      
+      <article class="full">
+          <h2>It's all JavaScript baby</h2>
+          <img src="images/frameworks.png">
+      </article>
+
+      <article class="fill">
+        <h3>
+          Platform Support
+        </h3>
+        <h4>Smartphone</h4>
+        <img src="images/smartphone.png">
+      </article>
+
+      <article class="fill">
+        <h3>
+          Platform Support
+        </h3>
+        <h4>Tablet</h4>
+        <img src="images/tablet.png">
+      </article>
+
+      <article>
+        <h2>Challenge-Response.</h2>
+      </article>
+      
+      <article class="fill">
+        <h3>
+          Challenge: 1 of 6
+        </h3>
+        <h4>Different Interaction Styles</h4>
+        <img src="images/formfactor.jpg">
+        <div class='source' style="color: white;">
+          Source: http://www.flickr.com/photos/marcfonteijn/4655088409/
+        </div>
+      </article>
+      
+      <article>
+        <h3>A common base for every form factor</h3>
+        <section>
+<pre>&lt;!doctype html&gt;
+&lt;html&gt;
+  &lt;body&gt;
+    &lt;article&gt;
+      &lt;header&gt;
+      &lt;/header&gt;
+      &lt;section&gt;
+      &lt;/section&gt;
+    &lt;/article&gt;
+    &lt;article&gt;
+    &lt;/article&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</pre>
+        </section>
+      </article>
+      
+      <article class="fill">
+        <h3>
+          Platform support
+        </h3>
+        <h4>Lynx</h4>
+        <img src="images/lynx.png">
+      </article>
+      
+      <article class="fill">
+        <h3>
+          Platform support
+        </h3>
+        <h4>Traditional Mobile</h4>
+        <img src="images/opera.png">
+      </article>
+      
+      <article>
+        <h3>Feature detection &amp; Progressive enhancement</h3>
+        <section><pre>if (Modernizr.history)
+  window.pushState(...)</pre></section>
+        <img src="images/progressive.png" style="width: 100%;"/>
+      </article>
+      
+      <article>
+        <h3>Form factor detection</h3>
+        <h4>FormfactorJS</h4>
+        <section>
+        <pre>formFactor.register({
+  formfactor: "phone",
+  resources:
+    ["/scripts/phone/jquery.touch.js",
+     "/scripts/phone/controller.js",
+     "/css/phone.css"]
+  },
+   ...
+});</pre>
+        </section>
+      </article>
+
+      <article>
+        <h3>Multiple UI's the scaleable way</h3>
+        <img src="images/awesome.png">  
+      </article>
+
+      <article>
+        <h3>Semantic events</h3>
+        <h4>High-level events</h4>
+        <p>phone.js</p>
+        <section><pre>window.addEventListener("articlechanged", function() {
+  // Do something cool with the UI to show the new article
+});
+
+window.addEventListener("categorychanged", function() {
+// Do something cool with the UI to show the new category
+});</pre>
+        </section>
+      </article>
+      
+      <article>
+        <h3>Classy HTML pattern</h3>
+        <section><pre>&lt;html class="menuState"&gt;&lt;/html&gt;
+&lt;html class="categoryState"&gt;&lt;/html&gt;
+&lt;html class="articleState"&gt;&lt;/html&gt;
+&lt;html class="articleState refreshing"&gt;&lt;/html&gt;
+</pre>
+        </section>
+      </article>
+      
+      <article>
+        <h3>Classy HTML (continued)</h3>
+        <section><pre>.articleState article.active{
+  overflow: visible;
+}
+
+.articleState article.active .story {
+  display: block;
+  padding: 0 1em 1em 0;
+  text-align: justify;
+}</pre></section>
+      </article>
+      
+      <article>
+        <h3>Doing more with LESS</h3>
+        <section><pre>.articleState {
+  article.active {
+    overflow: visible;
+    .story {
+      display: block;
+      padding: 0 1em 1em 0;
+      text-align: justify;
+    }
+  }
+}</pre></section>
+      </article>
+      
+       <article>
+          <h3>LESS - Color palette</h3>
+          <section><pre>@bgcolor1: #788058;
+@color1: white; 
+@bgcolor2: #9E9B59;
+@color2: white;</pre></section>
+          <section><pre>article {
+  h2 {
+    background-color: @bgcolor1; 
+  }
+  
+  h2:hover {
+    background-color: saturate(@bgcolor1, 10%); 
+  }
+}</pre></section>
+</article>
+      
+      <article class="fill">
+        <h3>
+         Challenge: 2 of 6
+        </h3>
+        <h4>Speed</h4>
+        <img src="images/speed.jpg">
+        <div class='source' style="color: white;">
+          Source: http://www.flickr.com/photos/fortherock/3903213484
+        </div>
+      </article>
+      
+      <article>
+        <h3>Single Page App<br>Fast Switching between UI States</h3>
+        <p>Mobile === High latency...</p>
+        <ul>
+          <li>Incrementally load data</li>
+          <li>Switch state via JavaScript</li>
+        </ul>
+      </article>
+      
+      <article>
+        <h3>HIJAX</h3>
+        <h4>Supporting old browsers and feature phones</h4>
+        <section><pre>$("a").click(function(e) {
+  fetchArticle(this.id);
+  e.preventDefault(); 
+});</pre></section>
+      </article>
+      
+      <article>
+        <h3>But....</h3>
+        <h4>Don't single page apps break the web?</h4>
+      </article>
+      
+      <article>
+        <h3>History of History</h3>
+        <p><b>2000</b>: example.com/category/technology</p>
+        <p><b>2006</b>: example.com/#category_technology</p>
+        <p><b>2009</b>: example.com/#!category_technology</p>
+      </article>
+      
+      <article>
+         <h3>11 years of progress</h3>
+         <h4>2000 === 2011</h4>
+         <p>example.com/category/technology</p>
+         <div class="build">
+           <h2>The difference is History</h2>
+         </div>
+      </article>
+      
+      <article>
+          <h3>HTML5 History</h3>
+          <section>
+          Change URL when UI changes
+          <pre>window.pushState(
+  {}, "Business News", "/business"
+);</pre>
+
+  Change UI when URL changes
+  <pre>window.onpopstate = function(e) { 
+  var url = document.location;
+  if(url.indexOf("/business") > 0) 
+    fetchCategory("business"); 
+};</pre>
+          </section>
+        </article>
+
+        <article>
+          <h3>But that code is a pain, so we made a framework</h3>
+          <h4>LeviRoutes</h4>
+          <section>
+          <pre>var app = new routes();
+app.get("/:category", function(req) {
+  fetchCategory(req.params.category, "json");
+});
+
+app.get("/:category/:article", function(req) {
+  fetchArticle(req.params.category, req.params.article);
+});</pre>
+        </section>
+      </article>
+
+      <article>
+        <h3>Server + Client = Dual side templating</h3>
+        <img src="images/mustache.png">
+      </article>
+    
+      <article>
+        <h3>Mustache</h3>
+        <section><pre>{{#articles}}
+&lt;article id="{{id}}" name="{{categoryId}}"&gt; 
+  &lt;header&gt; 
+  &lt;h1&gt;{{title}}&lt;/h1&gt; 
+  &lt;img class="thumbnail" src="{{thumbnail}}" /&gt; 
+  &lt;div class="summary"&gt;{{{shortDescription}}}&lt;/div&gt; 
+  &lt;/header&gt;
+&lt;/article&gt; 
+{{/articles}}</pre></section>
+      </article>
+  
+      <article class="fill">
+        <h3>
+         Challenge: 3 of 6
+        </h3>
+        <h4>Offline and Flakey Connections</h4>
+        <img src="images/tunnel.jpg">
+        <div class='source' style="color: white;">
+          Source: http://www.flickr.com/photos/cld/15103741/
+        </div>
+      </article>
+      
+      <article>
+        <h3>AppCache</h3>
+        <section><pre>&lt;html manifest="cache.manifest"&gt;</pre></section>
+        <section><pre>CACHE MANIFEST                                                                                                                             
+# Timestamp {{now}}
+ 
+# CSS 
+/css/base.css
+/css/tablet.css
+
+# SCRIPTS
+/scripts/controller.js
+/scripts/tablet/controller.js
+
+NETWORK:
+*
+</pre></section>
+
+
+      </article>
+      
+      <article>
+        <h3>Client Storage</h3>
+        <ul>
+          <li>LocalStorage</li>
+          <li>WebSQL Database</li>
+          <li>IndexedDB (Future)</li>
+        </ul>
+        <section><pre>if(xhr.status == 200) {
+  window.localStorage[url] = xhr.responseText; // &lt;- Save the data
+  callback(xhr.responseText);
+}
+else {
+  // There has been an error, use the saved data.
+  callback(window.localStorage[url]);
+}</pre></section>
+      </article>
+      
+      <article class="fill">
+        <h3>
+          Challenge: 4 of 6
+        </h3>
+        <h4>Discoverability</h4>
+        <img src="images/discovery.jpg">
+      </article>
+      
+      <article>
+          <h3>Common URL structure</h3>
+          <p><s>example.com/#category_technology</s></p>
+          <p>example.com/category/technology</p>          
+      </article>
+      
+      <article>
+        <h3>Search engines</h3>
+        <img src="images/search.png">
+      </article>
+      
+      
+      
+      <article class="fill">
+        <h3>Native marketplaces</h3>
+        <img src="images/androidmarket.png">
+      </article>
+      
+      <article class="fill">
+        <h3>Web stores</h3>
+        <img src="images/webstore.png">
+      </article>
+      
+       <article class="fill">
+          <h3 style="background-color: rgba(0,0,0, 0.5); color: white;">
+             Challenge: 5 of 6
+          </h3>
+          <h4  style="background-color: rgba(0,0,0, 0.5); color: white;">Touch</h4>
+          <img src="images/touch-challenge.jpg">
+        </article>
+      
+      <article class="fill">
+       <h2>The Awesome Layer:
+         Enabling touch</h2>
+       <img src="images/phonelayer.png">
+      </article>
+      
+      <article>
+        <h3>Touch</h3>
+        <section><pre>el.ontouchstart = function(ev) {
+  x = ev.clientX;
+  y = ev.clientY;
+};</pre></section>
+        <section><pre>el.ontouchend = function(ev) {
+  ...
+};</pre></section>
+      </article>
+      
+       <article>
+         <h3>But gestures are hard</h3>
+         <h4>jQuery.touch.js</h4>
+          <section><pre>$(".categories").touch({
+   swipeX: function() { ... }
+   swipeY: function() { ... }
+   moveX: function() { ... }
+   moveY: function() { ... }
+   click: function() { ... }
+   longHold: function() { ... }
+});</pre></section>
+       </article>
+        
+      <article>
+        <h3>Debugging</h3>
+        <h4>On desktop</h4>
+        <section><pre>var startEvent = Modernizr.touch ? "touchstart":"mouseEnter";
+window.addEventListener(startEvent, function() { ... });</pre>  
+  <h4>Debugging on device</h4>
+  <p>Attach USB</p>
+  <section><pre>./adb devices
+./adb -s  <i>deviceid</i>  logcat| grep I/browser</pre></section>
+  </section>
+  <p>Read more: <a href="http://goo.gl/iK0PX">goo.gl/iK0PX</a></p>
+      </article>
+    
+      <article class="fill">
+        <h3>Beware the Uncanny Valley</h3>
+        <ul style="color:white;">
+          <li>Make it perfect</li>
+          <li>Or make it different</li>
+        </ul>
+        <img src="images/uncanny.jpg">
+        <div class='source' style="color: white;">
+          Source: http://www.flickr.com/photos/fabiantheblind/4148531974
+        </div>
+      </article>
+      
+       <article class="fill">
+          <h3>Challenge: 6 of 6</h3>
+          <h4>Screen size</h4>
+          <img src="images/forms.jpg">
+          <div class='source' style="color: white;">
+            Source: http://www.flickr.com/photos/seanhobson/4504828599/
+          </div>
+        </article>
+        
+         <article>
+            <h3>Viewport</h3>
+            <section><pre>&lt;meta name="viewport" 
+      content="width=device-width"&gt;</pre></section>
+            <img src="images/viewport1.png">
+            <img src="images/viewport2.png">
+          </article>
+          
+          <article>
+              <h3>Viewport</h3>
+              <section><pre>&lt;meta name="viewport" 
+    content="width=device-width,
+      minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"&gt;</pre></section>
+            </article>
+
+        <article>
+          <h3>Media Queries</h3>
+          <section>
+          <pre>@media screen and (orientation:landscape) {
+  article img.thumbnail {
+    <strong>display: block;</strong>
+  }
+}</pre> 
+
+<pre>@media screen and (orientation:portrait) {
+  article img.thumbnail {
+    <strong>display: none;</strong>
+  }
+}</pre>
+          </section>
+        </article>
+        
+      <article>
+          <h3>
+            Challenges. What challenges?
+          </h3>
+          <ul>
+            <li class="tick">Different Interaction Styles</li>
+            <li class="tick">Speed</li>
+            <li class="tick">Offline and Flakey Connections</li>
+            <li class="tick">Discoverability</li>
+            <li class="tick">Touch</li>
+            <li class="tick">Screen Size</li>
+          </ul>
+        </article>
+      
+      <article class="fill">
+        <h2>
+          You can build apps that work everywhere
+        </h2>
+        <img src="images/awesomeeverywhere.png">
+      </article>
+      
+      <article class="fill">
+        <h3>
+          Platform support
+        </h3>
+        <h4>Desktop</h4>
+        <img src="images/desktop.png">
+      </article>
+      
+     <article class="fill">
+        <h3>
+          Platform support
+        </h3>
+        <h4>TV</h4>
+        <img src="images/tv.png">
+      </article>
+      
+     
+     
+     <article>
+        <h3>
+          Distributed Development
+        </h3>
+        <img src="images/heroes.png">
+      </article>
+
+      <article>
+        <h3>
+          Thank you!
+        </h3>
+        <p>Feedback: <a href="http://goo.gl/VRi5f">http://goo.gl/VRi5f</a></p>
+        <h4>Code (Open Source): 
+          <a href="http://goo.gl/hfqEj">goo.gl/hfqEj</a></h4>
+        <h4>Libraries</h4>
+        <p >
+            <strong>jQuery</strong>: <a href="http://jquery.com">jQuery.com</a>
+      <br/>
+            <strong>LessCSS</strong>: <a href="http://lesscss.org/">lesscss.org</a>
+        
+          <br/>
+            <strong>Modernizr</strong>: <a href="http://github.com/modernizr/modernizr">github.com/modernizr/modernizr</a>
+         <br/>
+            <strong>FormfactorJS</strong>: <a href="http://github.com/PaulKinlan/formfactor">github.com/PaulKinlan/formfactor</a>
+         <br/>
+            <strong>LeviRoutes</strong>: <a href="http://github.com/PaulKinlan/leviroutes">github.com/PaulKinlan/leviroutes</a><br/>
+            <strong>TouchLib</strong>: <a href="http://uxebu.com/blog/2010/04/27/touchscroll-a-scrolling-layer-for-webkit-mobile/">bit.ly/c1pxKA</a>
+          <br/>
+        </p>
+      </article>
+      
+      <article class='fill'>
+        <iframe src='https://www.google.com/moderator/#1/e=74f1b&t=74f1b.40'></iframe>
+      </article>
+    </section>
+  </body>
+</html>
