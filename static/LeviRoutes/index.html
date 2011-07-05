@@ -33,7 +33,7 @@
       position: absolute;
       left: 15px;
       bottom: 15px;
-      content: "Ask questions if you don't agree; http://github.com/PaulKinlan/LeviRoutes"; 
+      content: "Ask questions; http://github.com/PaulKinlan/LeviRoutes"; 
     }
     
    .fill h4 {
@@ -64,9 +64,7 @@
           <br>
           July 1st, 2011 <br>
           </p> 
-          <p>Twitter: #webintents</p>
       </article>
-
 
       <article class="fill">
         <h4 class="dark">
@@ -82,6 +80,10 @@
       <article>
         <h2>HTML5 History</h2>
       </article>      
+
+      <article>
+      <h2>The server can understand the URL</h2>
+      </article>
 
       <article>
         <pre>window.addEventListener("popstate", function(e) {
@@ -132,6 +134,7 @@ app.get("/:category/:article", function(req) {
       <h3>It can route Forms</h3>
       <pre>&lt;form method="post" action="/test"&gt;
   &lt;input type="text" name="email" /&gt;
+  &lt;input type="submit" /&gt;
 &lt;/form&gt;</pre>
 <pre>app.post("/test", function(req) {
   alert("posting form", req.values.email);

@@ -104,21 +104,31 @@ Modifications:
 
 <div class="slide">
   <section class="hbox boxcenter">
-    <h3>What is it</h3>
+    <h3>What is it?</h3>
   </section>
 </div>
 
 <div class="slide">
   <section class="hbox boxcenter">
-    <h3>This on this</h3>
+    <header>At its simplest</header>
+     <img src="static/images/what.png" /> 
   </section>
 </div>
+
+<div class="slide">
+  <section class="hbox boxcenter">
+    <h3>But it is a LOT more than that</h3>
+  </section>
+</div>
+
+
 
 <div class="slide">
   <section class="hbox boxcenter">
     <header>Consumer</header>
     <ul>
       <li>Near instant on</li>
+      <li>No hassle</li>
       <li>Always up to date</li>
       <li>Sandboxed Security</li>
     </ul> 
@@ -126,13 +136,15 @@ Modifications:
 </div>
 
 <div class="slide">
-  <section class="vbox boxcenter">
+  <section class="hbox boxcenter">
     <header>Business</header>
+    <div class="vbox">
     <p>Same as consumers, but with enterprise features</p>
     <ul>
-      <li>Central managemnet</li>
+      <li>Central management</li>
       <li>Subscription</li>
     </ul>
+    </div>
   </section>
 </div>
 
@@ -287,6 +299,28 @@ Modifications:
     </div>
   </section>
 </div>
+
+<div class="slide">
+  <header>Even more ways: Integrated sign-on</header>
+  <section class="hbox boxcenter">
+    <div class="noflex vbox boxcenter">
+      <img src="static/images/transparent.png" />
+    </div>
+  </section>
+</div>
+
+<div class="slide">
+  <header>Even more ways: Background</header>
+  <section class="hbox boxcenter">
+    <div class="noflex vbox boxcenter">
+<pre>if (window.chrome && window.chrome.app && window.chrome.app.isInstalled) {
+  <b>window.open("background.html#0", "bg", "background");</b>
+  ...
+}</pre>
+    </div>
+  </section>
+</div>
+
 
 <div class="slide">
   <header>Great, so I have a cool app. Now what? </header>
@@ -454,7 +488,7 @@ Modifications:
 
 <div class="slide"> 
   <section class="hbox boxcenter"> 
-    <header>Use AppMator app (http://appmator.appspot.com)</header> 
+    <header>Use AppMator (http://appmator.appspot.com)</header> 
     <div class="noflex vbox boxcenter"> 
     <ul> 
       <li><code>Enter URL</code></li> 
@@ -512,11 +546,44 @@ Modifications:
       </ul> 
   </div> 
   </section> 
-</div> 
+</div>
+
+<div class="slide">
+  <header>An underused feature: Panels</header>
+  <section class="hbox boxcenter">
+    <pre>"app": {
+  "launch": {
+    "web_url": "example.com",
+    <b>"container" : "tab"</b>
+  }
+}</pre> 
+  </section>
+</div>
 
 <div class="slide">
   <section>
     <header>Closing thoughts</header>
+    <ul>
+      <li>Don't just create a bookmark</li>
+      <li>Think about: <ul><li>How you want users to sign-up to your app</li>
+        <li>How you want users to launch your app</li>
+        <li>How you want users to use your app offline</li>
+      </ul></li>
+    </ul>
+  </section>
+</div>
+
+<div class="slide">
+  <header>Contest!!!!</header>
+  <section class="hbox boxcenter"> 
+  <div class="noflex vbox boxcenter">
+    <p>4 Categories, Best app wins a ChromeBook</p>
+    <p>All notable entries will be considered for promotion in the store.</p><br/>
+    <p>Closes 28th of August</p>
+      <a href="http://goo.gl/T7CoE">http://goo.gl/T7CoE</a><br>
+      <img src="http://goo.gl/T7CoE.qr"/>
+    <p>Tell your friends!!</p>
+    </div>
   </section>
 </div>
 
