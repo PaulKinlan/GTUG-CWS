@@ -13,7 +13,7 @@
     <meta charset='utf-8' />
     <script
       src='slides.js'></script>
-    <script src="http://0.0.0.0:8080/webintents.debug.js"></script>
+    <script src="http://webintents.org/webintents.min.js"></script>
   </head>
   
   <style>
@@ -33,7 +33,7 @@
       position: absolute;
       left: 15px;
       bottom: 15px;
-      content: "Ask questions if you don't agree"; 
+      content: "Ask questions"; 
     }
     
    .fill h4 {
@@ -67,7 +67,6 @@
           <br>
           July 1st, 2011 <br>
           </p> 
-          <p>Twitter: #webintents</p>
       </article>
 
 
@@ -82,8 +81,8 @@
         <img src="images/problem1.jpg">
       </article>
       
-      <article class="fill">
-        <img src="images/problem2.jpg">
+      <article class="fill" >
+      <img src="images/problem2.jpg" style="min-height:0;">
       </article>
       
       <article class="fill">
@@ -91,7 +90,7 @@
       </article>
 
       <article class="fill">
-        <img src="images/saduser.jpg">
+        <img src="images/frustrateduser.jpg">
       </article>
 
       <article class="fill">
@@ -100,7 +99,7 @@
       </article>
 
       <article class="fill">
-        <img src="images/cryingdeveloper.jpg">
+        <img src="images/saddeveloper.jpg">
       </article>
 
       <article>
@@ -110,24 +109,42 @@
       <article>
          <h2>Web Intents</h2>
       </article>
+
       <article>
-        <pre>var intent = new Intent("http://webintents.org/share", 
-                        "image/*", 
-                        "data://.....");
-window.navigator.startActivity(intent);</pre>
-        <h2>I need this service</h2>
+        <q>Web Intents is a framework for client-side service discovery and inter-application communication</q>
       </article>
 
+      <article>
+        <h2>It's like an Android Intent</h2>
+      </article>
+
+      <article>
+        <pre>var intent = new Intent("http://webintents.org/share", 
+                        "text/uri-list", 
+                        window.location.href);
+window.navigator.startActivity(intent);</pre>
+      <h2>I need this service</h2>
+      <button id="share">Share</button>
+      </article>
+<script>
+ var share = document.getElementById("share");
+ share.addEventListener("click", function() {
+   var intent = new Intent("http://webintents.org/share", 
+     "text/uri-list",
+     window.location.href);
+   window.navigator.startActivity(intent); 
+ });
+</script>
       
       <article>
       <h3>Action</h3>
       <p>A verb.</p>
       <p>Provide a common default set</p>
       <ul>
-        <li>http://webintents.org/share</li>
-        <li>http://webintents.org/edit</li>
-        <li>http://webintents.org/view</li>
-        <li>http://webintents.org/pick</li>
+        <li><a href="http://webintents.org/share" target="_blank">http://webintents.org/share</a></li>
+        <li><a href="http://webintents.org/edit" target="_blank">http://webintents.org/edit</a></li>
+        <li><a href="http://webintents.org/view" target="_blank">http://webintents.org/view</a></li>
+        <li><a href="http://webintents.org/pick" target="_blank">http://webintents.org/pick</a></li>
         <li>+ many more</li>
       </ul>
       </article>
@@ -250,6 +267,7 @@ window.navigator.startActivity(intent);</pre>
         <h3>
           Thank you!
         </h3>
+        <h2>Any Questions</h2>
       </article>
       
     </section>
