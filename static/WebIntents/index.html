@@ -13,7 +13,7 @@
     <meta charset='utf-8' />
     <script
       src='slides.js'></script>
-    <script src="http://webintents.org/webintents.min.js"></script>
+    <script src="http://webintents.org/webintents.js"></script>
   </head>
   
   <style>
@@ -33,7 +33,6 @@
       position: absolute;
       left: 15px;
       bottom: 15px;
-      content: "Ask questions"; 
     }
     
    .fill h4 {
@@ -63,9 +62,8 @@
           The future of web-apps
         </h1>
         <p>
-          Paul Kinlan (@paul_kinlan)<br/>
-          <br>
-          July 1st, 2011 <br>
+        Paul Kinlan (@paul_kinlan)<br/>
+        G+: plus.ly/paul.kinlan
           </p> 
       </article>
 
@@ -189,13 +187,6 @@ window.navigator.startActivity(intent);</pre>
       </article> 
  
       <article>
-        <h3>How does resultion work</h3>
-        <pre>if ( action == "http://webintents.org/share"
-    && type == "image/*" ) 
-  // show service</pre>
-      </article>
-
-      <article>
         <h3>We can do two-way communication</h3>
         <p>Client: </p><pre>var intent = new Intent("http://webintents.org/pick", "image/*");
 window.navigator.startActivity(intent, <b>function(intentData) {
@@ -255,7 +246,6 @@ window.navigator.startActivity(intent);</pre>
 
       <article class="fill">
         <h4 class="dark">Editing</h4>
-        <img src="images/sharing.png" />
       </article>
 
       <article class="fill">
@@ -269,13 +259,16 @@ window.navigator.startActivity(intent);</pre>
         <img src="images/firewall.jpg" />
         <div class="source" style="color: white;">http://www.flickr.com/photos/dhabben/2779511984/</div>
       </article>
-      
-      
+
+      <article>
+        <q>This will change the way we build apps on the web - Paul Kinlan</q>
+      </article>
+       
       <article>
         <h3>
           Thank you!
         </h3>
-        <h2>Any Questions</h2>
+        <h2>What are your use-cases?</h2>
       </article>
       
     </section>
